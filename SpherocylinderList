@@ -1,0 +1,239 @@
+/** 
+ * Prints SpherocylinderList.
+ *@author Alyson Futral - CPSC 1220 - AO1   
+ *@version 11/5/2023
+ */
+
+import java.text.DecimalFormat;
+
+/**
+ * Prints SpherocylinderList.
+ *
+ *
+ *
+ */
+public class SpherocylinderList {
+
+    private String name = " ";
+    private Spherocylinder[] objs;
+    private int numInArray = 0;
+
+    /**
+     * Constructor.
+     *
+     * @param nameIn used.
+     * @param objsIn used.
+     * @param numInArrayIn used.
+     */
+    public SpherocylinderList(String nameIn, Spherocylinder[] objsIn,
+                              int numInArrayIn) {
+        name = nameIn;
+        objs = objsIn;
+        numInArray = numInArrayIn;
+    }
+    
+    /**
+     * Method of getName.
+     *
+     * @return used.
+     *
+     */
+    public String getName() {
+        return name;
+    }
+    
+    /**
+     * Method of numberOfSpherocylinders.
+     *
+     * @return used.
+     *
+     */
+    public int numberOfSpherocylinders() { //array
+        return numInArray;
+    }
+    
+    /**
+     * Method of totalSurfaceArea.
+     *
+     * @return used.
+     *
+     */
+    public double totalSurfaceArea() {
+        double total = 0;
+        int index = 0;
+        while (index < numInArray) {
+            total += objs[index].surfaceArea();
+            index++;
+        }
+        return total;
+    }
+    
+    /**
+     * Method of totalVolume.
+     *
+     * @return used.
+     *
+     */
+    public double totalVolume() {
+        double total = 0;
+        int index = 0;
+        while (index < numInArray) {
+            total += objs[index].volume();
+            index++;
+        }
+        return total;
+    }
+    
+    /**
+     * Method of averageSurfaceArea.
+     *
+     * @return used.
+     *
+     */
+    public double averageSurfaceArea() {
+        double total = 0;
+        int index = 0;
+        while (index < numInArray) {
+            total += objs[index].surfaceArea(); 
+            index++;
+        }
+        double average = total / numberOfSpherocylinders(); //average = sum/count
+        return average;
+    }
+    
+    /**
+     * Method of averageVolume.
+     *
+     * @return used.
+     *
+     */
+    public double averageVolume() {
+        double total = 0;
+        int index = 0;
+        while (index < numInArray) {
+            total += objs[index].volume(); //think of as sum
+            index++;
+        }
+        double average = total / numberOfSpherocylinders(); //average = sum/count
+        return average;
+    }
+    
+    /**
+     * Method of toString.
+     *
+     * @return used.
+     *
+     */
+    public String toString() {
+        DecimalFormat df = new DecimalFormat("#,##0.0##");
+        String result = "";
+        result += "----- Summary for " + getName() + " -----"; 
+        result += "\nNumber of Spherocylinders: " + numberOfSpherocylinders();
+        result += "\nTotal Surface Area: " + totalSurfaceArea(); 
+        result += "\nTotal Volume: "  + totalVolume();
+        result += "\nAverage Surface Area: "  + averageSurfaceArea();
+        result += "\nAverage Volume: "  + averageVolume();
+        return result;
+    }
+    
+    /**
+     * Method of getList.
+     *
+     * @return used.
+     *
+     */
+    public Spherocylinder[] getList() {
+        return objs;
+    }
+    
+    /**
+     * Method of addSpherocylinder.
+     *
+     * @param label used.
+     * @param radius used.
+     * @param cylinderHeight used.
+     */
+    public void addSpherocylinder(String label, double radius,
+                    double cylinderHeight) {
+        Spherocylinder sc = new Spherocylinder(label, radius, cylinderHeight);
+        objs[numInArray] = sc;
+        numInArray++;
+    }
+    
+    /**
+     * Method of findSpherocylinder.
+     * @param label used.
+     * @return used.
+     *
+     */
+    public Spherocylinder findSpherocylinder(String label) {
+        for (int index = 0; index < numberOfSpherocylinders(); index++) {
+            if (objs[index].getLabel().equalsIgnoreCase(label)) {
+                return objs[index];
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Method of deleteSpherocylinder.
+     * @param label used.
+     * @return used.
+     *
+     */
+    public Spherocylinder deleteSpherocylinder(String label) {
+        for (int index = 0; index < numInArray; index++) {
+            if (objs[index].getLabel().equalsIgnoreCase(label)) {
+                for (int j = index; j < numInArray - 1; j++) {
+                    objs[j] = objs[j + 1];
+                }
+                objs[numInArray - 1] = null;
+                numInArray--;
+                break;
+            } 
+        }
+        return null;
+    }
+    
+    /**
+     * Method of editSpherocylinder.
+     * @param label used.
+     * @param radius used.
+     * @param cylinderHeight used.
+     * @return used.
+     *
+     */
+    public boolean editSpherocylinder(String label, double radius,
+                    double cylinderHeight) {
+        for (int index = 0; index < numInArray; index++) {
+            if (objs[index].getLabel().equalsIgnoreCase(label)) {
+                objs[index].getRadius();
+                objs[index].getCylinderHeight();
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Method of findSpherocylinderWithLargestVolume.
+     *
+     * @return used.
+     *
+     */
+    public Spherocylinder findSpherocylinderWithLargestVolume() {
+        double largest = 0;
+        int indexOfLargest = 0;
+        int index = 0;
+        while (index < numInArray) {
+            if (objs[indexOfLargest].volume() < objs[index].volume()) {
+                indexOfLargest = index;
+            }
+            index++;
+        }
+        if (numInArray == 0) {
+            return null;
+        }
+        return objs[indexOfLargest];
+    }
+}
