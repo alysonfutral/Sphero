@@ -1,0 +1,187 @@
+/**
+ * Prints Spherocylinder.
+ *@author Alyson Futral - CPSC 1220 - AO1   
+ *@version 10/22/2023
+ */
+
+import java.text.DecimalFormat;
+
+/**
+ * Prints Spherocylinder.
+ */
+public class Spherocylinder {
+
+    private String label = " ";
+    private double radius = 0;
+    private double cylinderHeight = 0;
+
+    //static variable
+    private static int count = 0;
+
+    //constructor
+    /**
+     * Constructor.
+     *
+     * @param labelIn used.
+     * @param radiusIn used.
+     * @param cylinderHeightIn used.
+     */
+    public Spherocylinder(String labelIn, double radiusIn, double 
+                         cylinderHeightIn) {
+       setLabel(labelIn);
+       setRadius(radiusIn);
+       setCylinderHeight(cylinderHeightIn);
+       count++;
+    }
+
+    //methods
+    /**
+     * Method of getLabel.
+     *
+     * @return used.
+     */
+    public String getLabel() {
+       return label;
+    }
+
+    /**
+     * Method of setLabel.
+     * @param labelIn used.
+     * @return used.
+     */
+    public boolean setLabel(String labelIn) {
+       if (labelIn != null) {
+          label = labelIn.trim();
+          return true;
+       } else {
+          return false;   
+       }
+    }
+
+    /**
+     * Method of getRadius.
+     *
+     * @return used.
+     */
+    public double getRadius() {
+       return radius;
+    }
+
+    /**
+     * Method of setRadius.
+     * @param radiusIn used.
+     * @return used.
+     */
+    public boolean setRadius(double radiusIn) {
+       if (radiusIn >= 0) {
+          radius = radiusIn;
+          return true;
+       } else {
+          return false; 
+       }
+    }
+
+    /**
+     * Method of getCylinderHeight.
+     * @return used.
+     */
+    public double getCylinderHeight() {
+       return cylinderHeight;
+    }
+
+    /**
+     * Method of setCylinderHeight.
+     * @param cylinderHeightIn used.
+     * @return used.
+     */
+    public boolean setCylinderHeight(double cylinderHeightIn) {
+       if (cylinderHeightIn >= 0) { //non-negative
+          cylinderHeight = cylinderHeightIn;
+          return true;
+       } else {
+          return false; 
+       }
+    }
+
+    /**
+     * Method of circumference.
+     * @return used.
+     */
+    public double circumference() {
+       return (2 * Math.PI * radius);
+    }
+
+    /**
+     * Method of surfaceArea.
+     * @return used.
+     */
+    public double surfaceArea() {
+       return ((2 * Math.PI * radius * ((2 * radius) + cylinderHeight)));
+    }
+
+    /**
+     * Method of volume.
+     * @return used.
+     */
+    public double volume() {
+       return (Math.PI * Math.pow(radius, 2) * (((4.0 / 3.0) * radius)
+                            + cylinderHeight));
+    }
+
+    /**
+     * Method of toString.
+     * @return used.
+     */
+    public String toString() {
+       DecimalFormat df = new DecimalFormat("#,##0.0##");
+
+       return "Spherocylinder \"" + getLabel() + "\" with radius "
+                            + getRadius() + " and cylinder height "
+                            + getCylinderHeight() + " has:"
+                            + "\n\tcircumference = "
+                            + df.format(circumference()) + " units"
+                            + "\n\tsurface area = " + df.format(surfaceArea()) 
+                            + " square units" + "\n\tvolume = " 
+                            + df.format(volume()) + " cubic units";
+    }
+
+    /**
+     * Method of getCount.
+     * @return used.
+     */
+    public static int getCount() {
+       return count;
+    }
+
+    /**
+     * Method of resetCount.
+     */
+    public static void resetCount() {
+       count = 0;
+    }
+
+    /**
+     * Method of type Object.
+     * @param obj used.
+     * @return used.
+     */
+    public boolean equals(Object obj) {
+       if (!(obj instanceof Spherocylinder)) {
+          return false;
+       } else {
+          Spherocylinder d = (Spherocylinder) obj;
+          return (label.equalsIgnoreCase(d.getLabel())
+             && Math.abs(radius - d.getRadius()) < .000001
+             && Math.abs(cylinderHeight - d.getCylinderHeight())
+             < .000001);
+       }
+    }
+
+    /**
+     * Method of hashCode.
+     * @return used.
+     */
+    public int hashCode() {
+       return 0;
+    }
+}
