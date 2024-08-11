@@ -1,0 +1,140 @@
+/**
+ * Test Spherocylinder.
+ *@author Alyson Futral - CPSC 1220 - AO1   
+ *@version 11/7/2023
+ */
+
+import org.junit.Assert;
+//import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+
+/** Tests for label. **/
+public class SpherocylinderListTest {
+
+/** Fixture initialization (common initialization for all tests). **/
+@Before public void setUp() {
+}
+
+    /** A test that always fails. **/
+@Test public void getNameTest() {
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5, 0.25);
+   Spherocylinder[] sAry = {example1};
+   SpherocylinderList sList = new SpherocylinderList("List Name", sAry, 1);
+   Assert.assertEquals("List Name", sList.getName());
+}
+
+       /** Tests for label. **/
+@Test public void numberOfSpherocylindersTest() {
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5, 0.25);
+   Spherocylinder[] sAry = {example1};
+   SpherocylinderList sList = new SpherocylinderList("Number of "
+      + " Spherocylinders", sAry, 1);
+   Assert.assertEquals(1, sList.numberOfSpherocylinders());
+}
+
+        /** Tests for label. **/
+@Test public void totalSurfaceAreaTest() {
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5, 0.25);
+   Spherocylinder[] sAry = {example1};
+   SpherocylinderList sList = new SpherocylinderList("Total Surface Area",
+      sAry, 1);
+   Assert.assertEquals(3.9269908169872414, sList.totalSurfaceArea(), .01);
+}
+
+       /** Tests for label. **/
+@Test public void totalVolumeTest() {
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5, 0.25);
+   Spherocylinder[] sAry = {example1};
+   SpherocylinderList sList = new SpherocylinderList("Total Volume", sAry,
+      1);
+   Assert.assertEquals(0.7199483164476609, sList.totalVolume(), .01);
+}
+
+        /** Tests for label. **/
+@Test public void averageSurfaceAreaTest() {
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5, 0.25);
+   Spherocylinder[] sAry = {example1};
+   SpherocylinderList sList = new SpherocylinderList("Average Surface "
+                           + "Area", sAry, 1);
+   Assert.assertEquals(3.9269908169872414, sList.averageSurfaceArea(), .01);
+}
+
+       /** Tests for label. **/
+@Test public void averageVolumeTest() {
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5, 0.25);
+   Spherocylinder[] sAry = {example1};
+   SpherocylinderList sList = new SpherocylinderList("Average Volume", sAry,
+      1);
+   Assert.assertEquals(0.7199483164476609, sList.averageVolume(), .01);
+}
+
+        /** Tests for label. **/
+@Test public void toStringTest() {
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5,
+                            0.25);
+   Spherocylinder example2 = new Spherocylinder(" Medium Example ", 10.8, 
+                            10.1);
+   Spherocylinder example3 = new Spherocylinder("Large Example", 98.32, 
+                            99.0);
+   Spherocylinder[] sAry = {example1};
+   Assert.assertFalse(sAry.toString().contains("\"Small Example\""));
+   Assert.assertFalse(sAry.toString().contains("\"Medium Example\""));
+   Assert.assertFalse(sAry.toString().contains("\"Large Example\""));
+}
+
+        /** Tests for label. **/
+@Test public void getListTest() { //Array
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5, 0.25);
+   Spherocylinder[] sAry = {example1};
+   SpherocylinderList sList = new SpherocylinderList("Average Volume", sAry,
+      1);
+   Assert.assertEquals(sAry, sList.getList());
+}
+
+        /** Tests for label. **/
+@Test public void addSpherocylinderTest() {
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5, 0.25);
+   Spherocylinder[] sAry = {example1};
+   SpherocylinderList sList = new SpherocylinderList("Add "
+                            + "Spherocylinder", sAry, 1);
+   Assert.assertEquals(sAry, sList.getList());
+}
+
+        /** Tests for label. **/
+@Test public void findSpherocylinderTest() {
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5, 0.25);
+   Spherocylinder[] sAry = {example1};
+   SpherocylinderList sList = new SpherocylinderList("Find "
+                            + "Spherocylinder", sAry, 1);
+   Assert.assertEquals(sAry, sList.getList());
+}
+
+        /** Tests for label. **/
+@Test public void deleteSpherocylinderTest() {
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5, 0.25);
+   Spherocylinder[] sAry = {example1};
+   SpherocylinderList sList = new SpherocylinderList("Delete "
+                            + "Spherocylinder", sAry, 1);
+   Assert.assertEquals(sAry, sList.getList());
+}
+
+        /** Tests for label. **/
+@Test public void editSpherocylinderTest() {
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5, 0.25);
+   Spherocylinder[] sAry = {example1};
+   SpherocylinderList sList = new SpherocylinderList("Edit "
+                            + "Spherocylinder", sAry, 1);
+   Assert.assertEquals(sAry, sList.getList());
+}
+
+        /** Tests for label. **/
+@Test public void findSpherocylinderWithLargestVolumeTest() {
+   Spherocylinder example1 = new Spherocylinder("Small Example", 0.5, 0.25);
+   Spherocylinder[] sAry = {example1};
+   SpherocylinderList sList = new SpherocylinderList("Total Volume", sAry,
+                            1);
+   Assert.assertEquals(sAry, sList.getList());
+}
+
+}
